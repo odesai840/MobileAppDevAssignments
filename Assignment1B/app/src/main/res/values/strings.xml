@@ -1,0 +1,13 @@
+<resources>
+    <string name="app_name">Assignment1B</string>
+    <string name="title">Temperature Conversion</string>
+    <string name="temperature_entry">Temperature:</string>
+    <string name="temperature_hint">Enter Temperature</string>
+    <string name="conversion_label">Conversion:</string>
+    <string name="conversion_text">N/A</string>
+    <string name="select_conversion">Select Conversion:</string>
+    <string name="c_to_f_radio">C to F</string>
+    <string name="f_to_c_radio">F to C</string>
+    <string name="calculate_button">Calculate</string>
+    <string name="reset_button">Reset</string>
+</resources>
