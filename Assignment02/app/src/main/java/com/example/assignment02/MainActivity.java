@@ -1,4 +1,4 @@
-// Assignment1B
+// Assignment02
 // MainActivity.java
 // Ohm Desai and Sullivan Crouse
 
