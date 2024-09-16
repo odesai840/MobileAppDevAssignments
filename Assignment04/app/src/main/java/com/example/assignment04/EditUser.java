@@ -28,6 +28,7 @@ public class EditUser extends AppCompatActivity {
     Button cancelButton;
     Button submitButton;
     String selectedRole;
+    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -39,6 +40,20 @@ public class EditUser extends AppCompatActivity {
         radioGroupRoles = findViewById(R.id.radioGroupRoles);
         cancelButton = findViewById(R.id.cancelButton);
         submitButton = findViewById(R.id.submitButton);
+
+        if(getIntent() != null && getIntent().getExtras() != null && getIntent().hasExtra(CreateUser.USER_KEY)){
+            user = getIntent().getParcelableExtra(CreateUser.USER_KEY);
+            editTextName.setText(user.name);
+            editTextEmail.setText(user.email);
+            selectedRole = user.role;
+            if (selectedRole.equals("Student")){
+                radioGroupRoles.check(R.id.studentRadio);
+            } else if(selectedRole.equals("Employee")){
+                radioGroupRoles.check(R.id.employeeRadio);
+            } else if (selectedRole.equals("Other")) {
+                radioGroupRoles.check(R.id.otherRadio);
+            }
+        }
 
         cancelButton.setOnClickListener(new View.OnClickListener() {
             @Override

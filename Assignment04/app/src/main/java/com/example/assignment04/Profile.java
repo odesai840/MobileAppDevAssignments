@@ -22,6 +22,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class Profile extends AppCompatActivity {
 
+    final static public String USER_KEY = "USER";
+
     TextView textViewName;
     TextView textViewEmail;
     TextView textViewRole;
@@ -61,6 +63,11 @@ public class Profile extends AppCompatActivity {
             @Override
             public void onClick(View view) {
                 Intent intent = new Intent(Profile.this, EditUser.class);
+                if (user != null) {
+                    intent.putExtra(USER_KEY, user);
+                    startActivity(intent);
+                    finish();
+                }
                 startEditUserForResult.launch(intent);
             }
         });
