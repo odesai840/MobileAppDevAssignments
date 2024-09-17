@@ -19,4 +19,7 @@
     <string name="country_select_button">Select</string>
     <string name="DoB_select_button">Select</string>
     <string name="submit_button">Submit</string>
+
+    <string name="select_dob_title">Date of Birth</string>
+    <string name
 </resources>
