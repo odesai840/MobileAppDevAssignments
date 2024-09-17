@@ -21,5 +21,8 @@
     <string name="submit_button">Submit</string>
 
     <string name="select_dob_title">Date of Birth</string>
-    <string name
+    <string name="select_dob_subtitle">Select your date of birth:</string>
+    <string name="dob_cancel_button">Cancel</string>
+    <string name="dob_submit_button">Submit</string>
+
 </resources>
