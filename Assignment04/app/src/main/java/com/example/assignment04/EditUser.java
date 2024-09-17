@@ -41,8 +41,8 @@ public class EditUser extends AppCompatActivity {
         cancelButton = findViewById(R.id.cancelButton);
         submitButton = findViewById(R.id.submitButton);
 
-        if(getIntent() != null && getIntent().getExtras() != null && getIntent().hasExtra(CreateUser.USER_KEY)){
-            user = getIntent().getParcelableExtra(CreateUser.USER_KEY);
+        if(getIntent() != null && getIntent().getExtras() != null && getIntent().hasExtra(Profile.USER_KEY)){
+            user = getIntent().getParcelableExtra(Profile.USER_KEY);
             editTextName.setText(user.name);
             editTextEmail.setText(user.email);
             selectedRole = user.role;
@@ -65,7 +65,7 @@ public class EditUser extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                User user = createUserWithInfo();
+                user = createUserWithInfo();
                 if (user != null) {
                     Intent intent = new Intent();
                     intent.putExtra(USER_KEY, user);

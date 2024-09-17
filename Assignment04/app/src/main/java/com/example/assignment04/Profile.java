@@ -65,8 +65,6 @@ public class Profile extends AppCompatActivity {
                 Intent intent = new Intent(Profile.this, EditUser.class);
                 if (user != null) {
                     intent.putExtra(USER_KEY, user);
-                    startActivity(intent);
-                    finish();
                 }
                 startEditUserForResult.launch(intent);
             }
