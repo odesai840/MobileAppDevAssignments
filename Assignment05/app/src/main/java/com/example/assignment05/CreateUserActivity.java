@@ -22,6 +22,8 @@ import androidx.core.view.WindowInsetsCompat;
 
 public class CreateUserActivity extends AppCompatActivity {
 
+    final static public String USER_KEY = "createdUser";
+
     EditText editTextName;
     EditText editTextEmail;
     EditText editTextAge;
@@ -31,7 +33,6 @@ public class CreateUserActivity extends AppCompatActivity {
     TextView textViewCountry;
     TextView textViewDoB;
     String selectedCountry;
-    User user;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -84,15 +85,18 @@ public class CreateUserActivity extends AppCompatActivity {
         submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                Boolean isValid = validateInputs();
-                if (isValid){
-                    Toast.makeText(CreateUserActivity.this, "All inputs are valid!", Toast.LENGTH_SHORT).show();
+                User user = createNewUser();
+                if (user != null){
+                    Intent intent = new Intent(CreateUserActivity.this, ProfileActivity.class);
+                    intent.putExtra(USER_KEY, user);
+                    startActivity(intent);
+                    finish();
                 }
             }
         });
     }
 
-    private Boolean validateInputs(){
+    private User createNewUser(){
         String userName = editTextName.getText().toString();
         String userEmail = editTextEmail.getText().toString();
         String userAge = editTextAge.getText().toString();
@@ -101,25 +105,25 @@ public class CreateUserActivity extends AppCompatActivity {
 
         if (userName.isEmpty()) {
             Toast.makeText(CreateUserActivity.this, "Name is required", Toast.LENGTH_SHORT).show();
-            return false;
+            return null;
         }
         if (userEmail.isEmpty()) {
             Toast.makeText(CreateUserActivity.this, "Email is required", Toast.LENGTH_SHORT).show();
-            return false;
+            return null;
         }
         if (userAge.isEmpty()) {
             Toast.makeText(CreateUserActivity.this, "Age is required", Toast.LENGTH_SHORT).show();
-            return false;
+            return null;
         }
         if (userCountry.equals("N/A")){
             Toast.makeText(CreateUserActivity.this, "Country is required", Toast.LENGTH_SHORT).show();
-            return false;
+            return null;
         }
         if (userDoB.equals("N/A")){
             Toast.makeText(CreateUserActivity.this, "DoB is required", Toast.LENGTH_SHORT).show();
-            return false;
+            return null;
         }
 
-        return true;
+        return new User(userName, userEmail, userAge, userCountry, userDoB);
     }
 }

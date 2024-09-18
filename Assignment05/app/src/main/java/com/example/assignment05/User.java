@@ -19,10 +19,10 @@ public class User implements Parcelable {
     public User() {
     }
 
-    public User(String name, String email, String role, String country, String Dob) {
+    public User(String name, String email, String age, String country, String Dob) {
         this.name = name;
         this.email = email;
-        this.age = role;
+        this.age = age;
         this.country = country;
         this.DoB = Dob;
     }

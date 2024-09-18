@@ -25,4 +25,6 @@
     <string name="dob_cancel_button">Cancel</string>
     <string name="dob_submit_button">Submit</string>
 
+    <string name="profile_activity_title">Profile</string>
+
 </resources>
