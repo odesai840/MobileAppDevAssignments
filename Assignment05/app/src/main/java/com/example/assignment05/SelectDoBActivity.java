@@ -5,6 +5,7 @@ import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.CalendarView;
+import android.widget.TextView;
 
 import androidx.activity.EdgeToEdge;
 import androidx.annotation.NonNull;
@@ -23,6 +24,7 @@ public class SelectDoBActivity extends AppCompatActivity {
     Button cancelButton;
     Button submitButton;
     String selectedDate;
+    TextView calendarTitle;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,6 +34,7 @@ public class SelectDoBActivity extends AppCompatActivity {
         calendarView = findViewById(R.id.calendarView);
         cancelButton = findViewById(R.id.cancelButton);
         submitButton = findViewById(R.id.submitButton2);
+        calendarTitle = findViewById(R.id.CalendarTitle);
 
         Calendar calendar = Calendar.getInstance();
         calendar.add(Calendar.YEAR, -18);
@@ -44,11 +47,13 @@ public class SelectDoBActivity extends AppCompatActivity {
         int month = selectedCalendar.get(Calendar.MONTH);
         int day = selectedCalendar.get(Calendar.DAY_OF_MONTH);
         selectedDate = (month + 1) + "/" + day + "/" + year;
+        calendarTitle.setText(selectedDate);
 
         calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
                 selectedDate = (month + 1) + "/" + day + "/" + year;
+                calendarTitle.setText(selectedDate);
             }
         });
 
