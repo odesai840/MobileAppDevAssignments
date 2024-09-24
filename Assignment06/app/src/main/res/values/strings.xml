@@ -1,5 +1,20 @@
 <resources>
     <string name="app_name">Assignment 06</string>
-    <!-- TODO: Remove or change this placeholder text -->
-    <string name="hello_blank_fragment">Hello blank fragment</string>
+    <string name="main_fragment_title">Welcome!!</string>
+    <string name="main_fragment_start_button_text">Start</string>
+    <string name="create_user_fragment_title">Create User Info</string>
+    <string name="name_text">Name:</string>
+    <string name="name_hint">Enter Name</string>
+    <string name="email_hint">Enter Email</string>
+    <string name="email_text">Email:</string>
+    <string name="role_text">Role:</string>
+    <string name="role_student_text">Student</string>
+    <string name="role_employee_text">Employee</string>
+    <string name="role_other_text">Other</string>
+    <string name="create_user_fragment_next_button_text">Next</string>
+    <string name="profile_fragment_title">Profile</string>
+    <string name="profile_fragment_update_button_text">Update</string>
+    <string name="edit_user_fragment_title">Edit User Info</string>
+    <string name="edit_user_fragment_cancel_button_text">Cancel</string>
+    <string name="edit_user_fragment_submit_button_text">Submit</string>
 </resources>
