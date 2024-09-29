@@ -1,0 +1,33 @@
+<resources>
+    <string name="app_name">Assignment 07</string>
+    <string name="main_activity_title">Welcome!!</string>
+    <string name="main_activity_start_button_text">Start</string>
+    <string name="create_user_activity_title">User Info</string>
+
+    <string name="name_text_view">Name:</string>
+    <string name="email_text_view">Email:</string>
+    <string name="age_text_view">Age:</string>
+    <string name="country_text_view">Country</string>
+    <string name="DoB_text_view">DoB:</string>
+
+    <string name="name_edit_text_hint">Enter Name</string>
+    <string name="email_edit_text_hint">Enter Email</string>
+    <string name="age_edit_text_hint">Enter Age</string>
+    <string name="country_selected">N/A</string>
+    <string name="DoB_selected">N/A</string>
+
+    <string name="country_select_button">Select</string>
+    <string name="DoB_select_button">Select</string>
+    <string name="submit_button">Submit</string>
+
+    <string name="country_description_text_view">Select your country:</string>
+    <string name="country_cancel_button">Cancel</string>
+
+    <string name="select_dob_title">Date of Birth</string>
+    <string name="select_dob_subtitle">Select your date of birth:</string>
+    <string name="dob_cancel_button">Cancel</string>
+    <string name="dob_submit_button">Submit</string>
+
+    <string name="profile_activity_title">Profile</string>
+
+</resources>
