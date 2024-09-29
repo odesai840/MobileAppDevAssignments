@@ -1,12 +1,23 @@
+// Assignment 06
+// CreateUserFragment.java
+// Ohm Desai and Sullivan Crouse
+
 package com.example.assignment06;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.RadioGroup;
+import android.widget.Toast;
+
+import com.example.assignment06.databinding.FragmentCreateUserBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -55,10 +66,73 @@ public class CreateUserFragment extends Fragment {
         }
     }
 
+    FragmentCreateUserBinding binding;
+    String selectedRole;
+
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
-        // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_user, container, false);
+        binding = FragmentCreateUserBinding.inflate(inflater, container, false);
+        return binding.getRoot();
+    }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.nextButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                User user = createUserWithInfo();
+                if (user != null) {
+                    mListener.gotoProfile(user);
+                }
+            }
+        });
+
+        binding.radioGroupRoles.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup radioGroup, int i) {
+                if (i == R.id.studentRadio) {
+                    selectedRole = "Student";
+                } else if (i == R.id.employeeRadio) {
+                    selectedRole = "Employee";
+                } else if (i == R.id.otherRadio) {
+                    selectedRole = "Other";
+                }
+            }
+        });
+    }
+
+    CreateUserFragmentListener mListener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mListener = (CreateUserFragmentListener) context;
+    }
+
+    public interface CreateUserFragmentListener {
+        void gotoProfile(User user);
+    }
+
+    private User createUserWithInfo(){
+        String userName = binding.editTextName.getText().toString();
+        String userEmail = binding.editTextEmail.getText().toString();
+
+        if (userName.isEmpty()) {
+            Toast.makeText(getActivity(), "Name is required", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (userEmail.isEmpty()) {
+            Toast.makeText(getActivity(), "Email is required", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (selectedRole == null || selectedRole.isEmpty()) {
+            Toast.makeText(getActivity(), "Role is required", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        return new User(userName, userEmail, selectedRole);
     }
 }

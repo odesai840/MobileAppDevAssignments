@@ -106,7 +106,7 @@
         android:layout_marginEnd="8dp"
         android:layout_marginBottom="32dp"
         android:backgroundTint="#9337FE"
-        android:text="@string/create_user_next_button_text"
+        android:text="@string/create_user_fragment_next_button_text"
         android:textSize="18sp"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
