@@ -29,7 +29,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
 
     public void gotoCreateUser(User user){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main, CreateUserFragment.newInstance(user))
+                .replace(R.id.main, new CreateUserFragment(), "create-user-fragment")
                 .commit();
     }
     /*
@@ -55,6 +55,11 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
 
     @Override
     public void sendSelectedDoB(String DoB) {
-        Log.d(TAG, "sendSelectedDOB" + DoB);
+
+        CreateUserFragment userFragment = (CreateUserFragment) getSupportFragmentManager().findFragmentByTag("create-user-fragment");
+        userFragment.setDoB(DoB);
+        if (userFragment != null){
+            getSupportFragmentManager().popBackStack();
+        }
     }
 }

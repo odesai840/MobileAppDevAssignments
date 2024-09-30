@@ -26,42 +26,26 @@ import com.example.assignment07.databinding.FragmentMainBinding;
  */
 public class CreateUserFragment extends Fragment {
 
-    // TODO: Rename parameter arguments, choose names that match
-    // the fragment initialization parameters, e.g. ARG_ITEM_NUMBER
-    private static final String ARG_PARAM_USER = "ARG_PARAM_USER";
+    String DoB;
+    String Country;
 
+    public void setDoB(String doB) {
+        DoB = doB;
+    }
 
-
-    // TODO: Rename and change types of parameters
-    private User mUser;
+    public void setCountry(String Country){
+        Country = Country;
+    }
 
     public CreateUserFragment() {
         // Required empty public constructor
     }
 
     FragmentCreateUserBinding binding;
-    /**
-     * Use this factory method to create a new instance of
-     * this fragment using the provided parameters.
-     *
-     * @param user Parameter 1.
-     * @return A new instance of fragment CreateUserFragment.
-     */
-    // TODO: Rename and change types and number of parameters
-    public static CreateUserFragment newInstance(User user) {
-        CreateUserFragment fragment = new CreateUserFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(ARG_PARAM_USER, user);
-        fragment.setArguments(args);
-        return fragment;
-    }
 
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
-        if (getArguments() != null) {
-            mUser = (User) getArguments().getSerializable(ARG_PARAM_USER);
-        }
     }
 
     @Override
@@ -82,6 +66,18 @@ public class CreateUserFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+
+        if (DoB == null){
+            binding.DoBSelected.setText("N/A");
+        } else {
+            binding.DoBSelected.setText(DoB);
+        }
+
+        if (Country == null){
+            binding.countrySelected.setText("N/A");
+        } else {
+            binding.countrySelected.setText(Country);
+        }
 
         binding.DoBButton.setOnClickListener(new View.OnClickListener() {
             @Override
