@@ -77,11 +77,12 @@ public class MainFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
+        //getActivity()
 
         binding.button.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                mListener.gotoCreateUser();
+                mListener.gotoCreateUser(new User(null, null, null, null, null));
             }
         });
     }
@@ -95,6 +96,6 @@ public class MainFragment extends Fragment {
     }
 
     public interface MainFragmentListener {
-        void gotoCreateUser();
+        void gotoCreateUser(User user);
     }
 }

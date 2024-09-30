@@ -4,7 +4,10 @@
 
 package com.example.assignment07;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
@@ -12,7 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener, CreateUserFragment.CreateUserFragmentListener, SelectDoBFragment.DoBSelectionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -24,9 +27,34 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
                 .commit();
     }
 
-    public void gotoCreateUser(){
+    public void gotoCreateUser(User user){
         getSupportFragmentManager().beginTransaction()
-                .replace(R.id.main, new CreateUserFragment())
+                .replace(R.id.main, CreateUserFragment.newInstance(user))
                 .commit();
+    }
+    /*
+    @Override
+    public void gotoCountry(User user) {
+        //getSupportFragmentManager().beginTransaction()
+
+         //       .commit()
+    }
+*/
+    @Override
+    public void gotoDoB() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectDoBFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void cancelDoBSelection() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void sendSelectedDoB(String DoB) {
+        Log.d(TAG, "sendSelectedDOB" + DoB);
     }
 }

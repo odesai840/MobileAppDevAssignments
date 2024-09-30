@@ -83,6 +83,13 @@ public class CreateUserFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.DoBButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.gotoDoB();
+            }
+        });
+
         binding.countryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -140,9 +147,8 @@ public class CreateUserFragment extends Fragment {
 
 
     public interface CreateUserFragmentListener {
-        void gotoProfile(User user);
-        void gotoCountry(User user);
-        void gotoDoB(User user);
+        //void gotoProfile(User user);
+        //void gotoCountry(User user);
+        void gotoDoB();
     }
-
 }
