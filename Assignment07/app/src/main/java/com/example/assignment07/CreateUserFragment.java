@@ -19,11 +19,6 @@ import android.widget.Toast;
 import com.example.assignment07.databinding.FragmentCreateUserBinding;
 import com.example.assignment07.databinding.FragmentMainBinding;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link CreateUserFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class CreateUserFragment extends Fragment {
 
     String DoB;
@@ -97,7 +92,6 @@ public class CreateUserFragment extends Fragment {
             @Override
             public void onClick(View view) {
                 User user = createUserWithInfo();
-
                 if (user != null){
                     mListener.gotoProfile(user);
                 }

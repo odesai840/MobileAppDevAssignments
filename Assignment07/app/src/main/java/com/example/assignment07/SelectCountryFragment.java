@@ -15,6 +15,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RadioButton;
+import android.widget.RadioGroup;
 import android.widget.Toast;
 
 import com.example.assignment07.databinding.FragmentSelectCountryBinding;
@@ -48,8 +49,21 @@ public class SelectCountryFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
 
         // TO DO figure our how to select radio group
-        //binding.countryRadioGroup.add
-        country = "XYZ";
+        for (String countryName : Data.countries) {
+            RadioButton radioButton = new RadioButton(getContext());
+            radioButton.setText(countryName);
+            binding.countryRadioGroup.addView(radioButton);
+        }
+
+        binding.countryRadioGroup.setOnCheckedChangeListener(new RadioGroup.OnCheckedChangeListener() {
+            @Override
+            public void onCheckedChanged(RadioGroup group, int checkedId) {
+                RadioButton selectedRadioButton = group.findViewById(checkedId);
+                if (selectedRadioButton != null) {
+                    country = selectedRadioButton.getText().toString();
+                }
+            }
+        });
 
         binding.cancelCountryButton.setOnClickListener(new View.OnClickListener() {
             @Override
@@ -68,7 +82,6 @@ public class SelectCountryFragment extends Fragment {
                 }
             }
         });
-
     }
 
 

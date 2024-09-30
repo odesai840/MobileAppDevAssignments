@@ -7,7 +7,7 @@
     <string name="name_text_view">Name:</string>
     <string name="email_text_view">Email:</string>
     <string name="age_text_view">Age:</string>
-    <string name="country_text_view">Country</string>
+    <string name="country_text_view">Country:</string>
     <string name="DoB_text_view">DoB:</string>
 
     <string name="name_edit_text_hint">Enter Name</string>
@@ -20,6 +20,7 @@
     <string name="DoB_select_button">Select</string>
     <string name="submit_button">Submit</string>
 
+    <string name="select_country_text_view">Country</string>
     <string name="country_description_text_view">Select your country:</string>
     <string name="country_cancel_button">Cancel</string>
 

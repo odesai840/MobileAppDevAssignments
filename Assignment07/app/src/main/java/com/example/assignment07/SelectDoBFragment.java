@@ -21,11 +21,6 @@ import com.example.assignment07.databinding.FragmentSelectDoBBinding;
 
 import java.util.Calendar;
 
-/**
- * A simple {@link Fragment} subclass.
- * Use the {@link SelectDoBFragment#newInstance} factory method to
- * create an instance of this fragment.
- */
 public class SelectDoBFragment extends Fragment {
 
     String selectedDate;
