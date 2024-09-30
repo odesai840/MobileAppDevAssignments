@@ -96,7 +96,11 @@ public class CreateUserFragment extends Fragment {
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
+                User user = createUserWithInfo();
 
+                if (user != null){
+                    mListener.gotoProfile(user);
+                }
             }
         });
     }

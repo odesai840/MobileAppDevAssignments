@@ -48,14 +48,6 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
                 .commit();
     }
 
-    /*
-        @Override
-        public void gotoCountry(User user) {
-            //getSupportFragmentManager().beginTransaction()
-
-             //       .commit()
-        }
-    */
     @Override
     public void gotoDoB() {
         getSupportFragmentManager().beginTransaction()
