@@ -33,8 +33,8 @@ public class CreateUserFragment extends Fragment {
         DoB = doB;
     }
 
-    public void setCountry(String Country){
-        Country = Country;
+    public void setCountry(String country){
+        Country = country;
     }
 
     public CreateUserFragment() {
@@ -89,7 +89,7 @@ public class CreateUserFragment extends Fragment {
         binding.countryButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-
+                mListener.gotoCountry();
             }
         });
 
@@ -143,8 +143,8 @@ public class CreateUserFragment extends Fragment {
 
 
     public interface CreateUserFragmentListener {
-        //void gotoProfile(User user);
-        //void gotoCountry(User user);
+        void gotoProfile(User user);
+        void gotoCountry();
         void gotoDoB();
     }
 }

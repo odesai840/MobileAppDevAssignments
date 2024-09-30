@@ -15,7 +15,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener, CreateUserFragment.CreateUserFragmentListener, SelectDoBFragment.DoBSelectionListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener, CreateUserFragment.CreateUserFragmentListener, SelectDoBFragment.DoBSelectionListener, SelectCountryFragment.CountrySelectionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -32,14 +32,30 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
                 .replace(R.id.main, new CreateUserFragment(), "create-user-fragment")
                 .commit();
     }
-    /*
-    @Override
-    public void gotoCountry(User user) {
-        //getSupportFragmentManager().beginTransaction()
 
-         //       .commit()
+    @Override
+    public void gotoProfile(User user) {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, ProfileFragment.newInstance(user))
+                .commit();
     }
-*/
+
+    @Override
+    public void gotoCountry() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectCountryFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    /*
+        @Override
+        public void gotoCountry(User user) {
+            //getSupportFragmentManager().beginTransaction()
+
+             //       .commit()
+        }
+    */
     @Override
     public void gotoDoB() {
         getSupportFragmentManager().beginTransaction()
@@ -62,4 +78,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
             getSupportFragmentManager().popBackStack();
         }
     }
+
+
+    @Override
+    public void cancelCountrySelection() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void sendSelectedCountry(String country) {
+        CreateUserFragment userFragment = (CreateUserFragment) getSupportFragmentManager().findFragmentByTag("create-user-fragment");
+        userFragment.setCountry(country);
+        if (userFragment != null){
+            getSupportFragmentManager().popBackStack();
+        }
+    }
+
 }
