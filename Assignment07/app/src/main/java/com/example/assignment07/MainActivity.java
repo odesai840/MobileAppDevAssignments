@@ -37,6 +37,7 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     public void gotoProfile(User user) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main, ProfileFragment.newInstance(user))
+                .addToBackStack(null)
                 .commit();
     }
 
