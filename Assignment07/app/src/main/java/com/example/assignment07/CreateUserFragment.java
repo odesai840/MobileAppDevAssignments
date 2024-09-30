@@ -4,13 +4,20 @@
 
 package com.example.assignment07;
 
+import android.content.Context;
 import android.os.Bundle;
 
+import androidx.annotation.NonNull;
+import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
+
+import com.example.assignment07.databinding.FragmentCreateUserBinding;
+import com.example.assignment07.databinding.FragmentMainBinding;
 
 /**
  * A simple {@link Fragment} subclass.
@@ -32,6 +39,7 @@ public class CreateUserFragment extends Fragment {
         // Required empty public constructor
     }
 
+    FragmentCreateUserBinding binding;
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.
@@ -63,6 +71,58 @@ public class CreateUserFragment extends Fragment {
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
         // Inflate the layout for this fragment
-        return inflater.inflate(R.layout.fragment_create_user, container, false);
+        binding = FragmentCreateUserBinding.inflate(inflater, container, false);
+        return binding.getRoot();
     }
+
+    @Override
+    public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
+        super.onViewCreated(view, savedInstanceState);
+
+        binding.countryButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+
+            }
+        });
+    }
+
+    private User createUserWithInfo(){
+        String userName = binding.enterName.getText().toString();
+        String userEmail = binding.enterEmail.getText().toString();
+        String age;
+        try {
+            Double.valueOf(binding.enterAge.getText().toString());
+            age = binding.enterAge.getText().toString();
+        } catch (NumberFormatException e){
+            Toast.makeText(getActivity(), "Age must be a number", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        if (userName.isEmpty()) {
+            Toast.makeText(getActivity(), "Name is required", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (userEmail.isEmpty()) {
+            Toast.makeText(getActivity(), "Email is required", Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
+        return new User(userName, userEmail, age);
+    }
+
+    CreateUserFragmentListener mListener;
+
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        mListener = (CreateUserFragmentListener) context;
+    }
+
+    public interface CreateUserFragmentListener {
+        void gotoProfile(User user);
+        void gotoCountry(User user);
+        void gotoDoB(User user);
+    }
+
 }

@@ -12,6 +12,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.example.assignment07.databinding.FragmentSelectDoBBinding;
+
 /**
  * A simple {@link Fragment} subclass.
  * Use the {@link SelectDoBFragment#newInstance} factory method to
@@ -32,6 +34,7 @@ public class SelectDoBFragment extends Fragment {
         // Required empty public constructor
     }
 
+    FragmentSelectDoBBinding
     /**
      * Use this factory method to create a new instance of
      * this fragment using the provided parameters.

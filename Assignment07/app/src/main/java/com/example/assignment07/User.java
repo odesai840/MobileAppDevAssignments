@@ -9,7 +9,9 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
-public class User implements Parcelable {
+import java.io.Serializable;
+
+public class User implements Parcelable, Serializable {
     public String name;
     public String email;
     public String age;
