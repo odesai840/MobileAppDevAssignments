@@ -32,12 +32,34 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
     }
 
     @Override
-    public void gotoCountry() {
+    public void gotoMarital() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectMaritalStatusFragment())
+                .addToBackStack(null)
+                .commit();
+    }
 
+    @Override
+    public void gotoEdu() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectEduLevelFragment())
+                .addToBackStack(null)
+                .commit();
+    }
+
+    @Override
+    public void gotoCountry() {
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectStateFragment())
+                .addToBackStack(null)
+                .commit();
     }
 
     @Override
     public void gotoDoB() {
-
+        getSupportFragmentManager().beginTransaction()
+                .replace(R.id.main, new SelectDoBFragment())
+                .addToBackStack(null)
+                .commit();
     }
 }

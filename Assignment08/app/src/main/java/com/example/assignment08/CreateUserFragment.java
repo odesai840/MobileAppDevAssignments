@@ -22,6 +22,8 @@ public class CreateUserFragment extends Fragment {
 
     String DoB;
     String Country;
+    String Marital;
+    String Edu;
 
     public void setDoB(String doB) {
         DoB = doB;
@@ -30,6 +32,10 @@ public class CreateUserFragment extends Fragment {
     public void setCountry(String country){
         Country = country;
     }
+
+    public void setMarital(String marital) {Marital = marital;}
+
+    public void setEdu(String edu) {Edu = edu;}
 
     public CreateUserFragment() {
         // Required empty public constructor
@@ -73,6 +79,18 @@ public class CreateUserFragment extends Fragment {
             binding.countrySelected.setText(Country);
         }
 
+        if (Marital == null){
+            binding.countrySelected.setText("N/A");
+        } else {
+            binding.countrySelected.setText(Marital);
+        }
+
+        if (Edu == null){
+            binding.eduSelected.setText("N/A");
+        } else {
+            binding.eduSelected.setText(Edu);
+        }
+
         binding.DoBButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
@@ -85,6 +103,16 @@ public class CreateUserFragment extends Fragment {
             public void onClick(View view) {
                 mListener.gotoCountry();
             }
+        });
+
+        binding.maritalButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { mListener.gotoMarital();}
+        });
+
+        binding.eduButton.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) { mListener.gotoEdu();}
         });
 
         binding.submitButton.setOnClickListener(new View.OnClickListener() {
@@ -120,21 +148,30 @@ public class CreateUserFragment extends Fragment {
             Double.valueOf(binding.enterAge.getText().toString());
             phone = binding.enterAge.getText().toString();
             if (phone.isEmpty()){
-                Toast.makeText(getActivity(),"Age is required",Toast.LENGTH_SHORT).show();
+                Toast.makeText(getActivity(),"Phone is required",Toast.LENGTH_SHORT).show();
                 return null;
             }
         } catch (NumberFormatException e){
-            Toast.makeText(getActivity(), "Age must be a number", Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(), "Phone must be a number", Toast.LENGTH_SHORT).show();
             return null;
         }
         if (userCountry.equals("N/A")) {
-            Toast.makeText(getActivity(),"Country is required",Toast.LENGTH_SHORT).show();
+            Toast.makeText(getActivity(),"State is required",Toast.LENGTH_SHORT).show();
             return null;
         }
         if (userDoB.equals("N/A")) {
             Toast.makeText(getActivity(),"Date of Birth is required",Toast.LENGTH_SHORT).show();
             return null;
         }
+        if (userMarital.equals("N/A")) {
+            Toast.makeText(getActivity(),"Marital Status is required",Toast.LENGTH_SHORT).show();
+            return null;
+        }
+        if (userEdu.equals("N/A")){
+            Toast.makeText(getActivity(), "Education Level is required",Toast.LENGTH_SHORT).show();
+            return null;
+        }
+
 
         return new User(userName, userEmail, phone, userCountry, userDoB, userMarital,userEdu);
     }
@@ -143,6 +180,8 @@ public class CreateUserFragment extends Fragment {
 
     public interface CreateUserFragmentListener {
         void gotoProfile(User user);
+        void gotoMarital();
+        void gotoEdu();
         void gotoCountry();
         void gotoDoB();
     }
