@@ -12,27 +12,34 @@ import androidx.annotation.NonNull;
 public class User implements Parcelable {
     public String name;
     public String email;
-    public String age;
-    public String country;
+    public String phone;
+    public String state;
     public String DoB;
+    public String marital;
+    public String edu;
 
     public User() {
     }
 
-    public User(String name, String email, String age, String country, String Dob) {
+    public User(String name, String email, String phone, String state, String Dob,
+                String marital, String edu) {
         this.name = name;
         this.email = email;
-        this.age = age;
-        this.country = country;
+        this.phone = phone;
+        this.state = state;
         this.DoB = Dob;
+        this.marital = marital;
+        this.edu = edu;
     }
 
     protected User(Parcel in) {
         name = in.readString();
         email = in.readString();
-        age = in.readString();
-        country = in.readString();
+        phone = in.readString();
+        state = in.readString();
         DoB = in.readString();
+        marital = in.readString();
+        edu = in.readString();
     }
 
     public static final Creator<User> CREATOR = new Creator<User>() {
@@ -56,8 +63,10 @@ public class User implements Parcelable {
     public void writeToParcel(@NonNull Parcel parcel, int i) {
         parcel.writeString(this.name);
         parcel.writeString(this.email);
-        parcel.writeString(this.age);
-        parcel.writeString(this.country);
+        parcel.writeString(this.phone);
+        parcel.writeString(this.state);
         parcel.writeString(this.DoB);
+        parcel.writeString(this.marital);
+        parcel.writeString(this.edu);
     }
 }
