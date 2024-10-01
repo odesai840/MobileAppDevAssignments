@@ -196,14 +196,14 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintBottom_toBottomOf="@+id/maritalSelected"
         app:layout_constraintStart_toStartOf="@+id/textView7"
-        app:layout_constraintTop_toTopOf="@+id/textView15"
+        app:layout_constraintTop_toTopOf="@+id/maritalSelected"
         app:layout_constraintVertical_bias="0.0"
         tools:text="@string/marital_status_text_view" />
 
     <TextView
-        android:id="@+id/textView15"
+        android:id="@+id/maritalSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="16dp"
@@ -221,9 +221,9 @@
         android:layout_marginEnd="16dp"
         android:text="@string/marital_select_button"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView15"
+        app:layout_constraintBottom_toBottomOf="@+id/maritalSelected"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView15" />
+        app:layout_constraintTop_toTopOf="@+id/maritalSelected" />
 
     <TextView
         android:id="@+id/textView16"
@@ -231,13 +231,13 @@
         android:layout_height="wrap_content"
         android:text="TextView"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintBottom_toBottomOf="@+id/eduSelected"
         app:layout_constraintStart_toStartOf="@+id/textView14"
-        app:layout_constraintTop_toTopOf="@+id/textView17"
+        app:layout_constraintTop_toTopOf="@+id/eduSelected"
         tools:text="@string/edu_text_view" />
 
     <TextView
-        android:id="@+id/textView17"
+        android:id="@+id/eduSelected"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:layout_marginStart="8dp"
@@ -245,7 +245,7 @@
         android:text="@string/edu_selected"
         android:textSize="20sp"
         app:layout_constraintStart_toEndOf="@+id/textView16"
-        app:layout_constraintTop_toBottomOf="@+id/textView15" />
+        app:layout_constraintTop_toBottomOf="@+id/maritalSelected" />
 
     <Button
         android:id="@+id/button3"
@@ -254,7 +254,7 @@
         android:layout_marginEnd="16dp"
         android:text="@string/edu_select_button"
         android:textSize="20sp"
-        app:layout_constraintBottom_toBottomOf="@+id/textView17"
+        app:layout_constraintBottom_toBottomOf="@+id/eduSelected"
         app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="@+id/textView17" />
+        app:layout_constraintTop_toTopOf="@+id/eduSelected" />
 </androidx.constraintlayout.widget.ConstraintLayout>

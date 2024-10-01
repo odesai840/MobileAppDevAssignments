@@ -103,7 +103,9 @@ public class CreateUserFragment extends Fragment {
         String userEmail = binding.enterEmail.getText().toString();
         String userCountry = binding.countrySelected.getText().toString();
         String userDoB = binding.DoBSelected.getText().toString();
-        String age;
+        String userMarital = binding.maritalSelected.getText().toString();
+        String userEdu = binding.eduSelected.getText().toString();
+        String phone;
 
 
         if (userName.isEmpty()) {
@@ -116,8 +118,8 @@ public class CreateUserFragment extends Fragment {
         }
         try {
             Double.valueOf(binding.enterAge.getText().toString());
-            age = binding.enterAge.getText().toString();
-            if (age.isEmpty()){
+            phone = binding.enterAge.getText().toString();
+            if (phone.isEmpty()){
                 Toast.makeText(getActivity(),"Age is required",Toast.LENGTH_SHORT).show();
                 return null;
             }
@@ -134,7 +136,7 @@ public class CreateUserFragment extends Fragment {
             return null;
         }
 
-        return new User(userName, userEmail, age, userCountry, userDoB);
+        return new User(userName, userEmail, phone, userCountry, userDoB, userMarital,userEdu);
     }
 
 
