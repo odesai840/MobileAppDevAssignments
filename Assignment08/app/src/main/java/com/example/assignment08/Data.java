@@ -3,7 +3,7 @@ package com.example.assignment08;
 public class Data {
 
 
-    static String[] states = {
+    public static String[] states = {
             "Alabama", "Alaska", "Arizona", "Arkansas", "California",
             "Colorado", "Connecticut", "Delaware", "Florida", "Georgia",
             "Hawaii", "Idaho", "Illinois", "Indiana", "Iowa",
@@ -16,15 +16,15 @@ public class Data {
             "Virginia", "Washington", "West Virginia", "Wisconsin", "Wyoming"
     };
 
-    static String[] maritalStatus = {
+    public static String[] maritalStatus = {
             "Single", "Married", "Divorced", "Widowed", "Separated", "Other"
     };
 
-    static String[] educationLevels = {
+    public static String[] educationLevels = {
             "High School", "Associate's Degree", "Bachelor's Degree", "Master's Degree", "Doctorate", "Other"
     };
 
-    static String[] incomeLevels = {
+    public static String[] incomeLevels = {
             "Less than $25,000", "$25,000 - $49,999", "$50,000 - $74,999", "$75,000 - $99,999", "$100,000 - $149,999", "$150,000 or more"
     };
 }
