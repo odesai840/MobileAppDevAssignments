@@ -8,7 +8,7 @@ import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
 
-public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener, CreateUserFragment.CreateUserFragmentListener {
+public class MainActivity extends AppCompatActivity implements MainFragment.MainFragmentListener, CreateUserFragment.CreateUserFragmentListener, SelectDoBFragment.DoBSelectionListener {
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -61,5 +61,20 @@ public class MainActivity extends AppCompatActivity implements MainFragment.Main
                 .replace(R.id.main, new SelectDoBFragment())
                 .addToBackStack(null)
                 .commit();
+    }
+
+    @Override
+    public void cancelDoBSelection() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void sendSelectedDoB(String DoB) {
+
+        CreateUserFragment userFragment = (CreateUserFragment) getSupportFragmentManager().findFragmentByTag("create-user-fragment");
+        userFragment.setDoB(DoB);
+        if (userFragment != null){
+            getSupportFragmentManager().popBackStack();
+        }
     }
 }
