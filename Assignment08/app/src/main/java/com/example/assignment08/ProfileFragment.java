@@ -1,3 +1,7 @@
+// Assignment 08
+// ProfileFragment.java
+// Ohm Desai and Sullivan Crouse
+
 package com.example.assignment08;
 
 import android.os.Bundle;

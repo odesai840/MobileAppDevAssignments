@@ -1,3 +1,7 @@
+// Assignment 08
+// SelectStateFragment.java
+// Ohm Desai and Sullivan Crouse
+
 package com.example.assignment08;
 
 import android.content.Context;

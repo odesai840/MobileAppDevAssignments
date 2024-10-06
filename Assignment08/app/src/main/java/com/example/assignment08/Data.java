@@ -1,3 +1,7 @@
+// Assignment 08
+// Data.java
+// Ohm Desai and Sullivan Crouse
+
 package com.example.assignment08;
 
 public class Data {

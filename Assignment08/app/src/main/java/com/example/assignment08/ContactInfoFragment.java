@@ -1,3 +1,7 @@
+// Assignment 08
+// ContactInfoFragment.java
+// Ohm Desai and Sullivan Crouse
+
 package com.example.assignment08;
 
 import android.os.Bundle;
