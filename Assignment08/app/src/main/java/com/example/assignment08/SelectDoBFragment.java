@@ -24,7 +24,6 @@ import java.util.Calendar;
 public class SelectDoBFragment extends Fragment {
 
     String selectedDate;
-    Boolean selected = false;
 
     public SelectDoBFragment() {
         // Required empty public constructor
@@ -67,8 +66,7 @@ public class SelectDoBFragment extends Fragment {
         binding.calendarView.setOnDateChangeListener(new CalendarView.OnDateChangeListener() {
             @Override
             public void onSelectedDayChange(@NonNull CalendarView calendarView, int year, int month, int day) {
-                selected = true;
-                selectedDate = selectedDate = (month + 1) + "/" + day + "/" + year;
+                selectedDate = (month + 1) + "/" + day + "/" + year;
                 binding.CalendarTitle.setText(selectedDate);
             }
         });
@@ -83,7 +81,7 @@ public class SelectDoBFragment extends Fragment {
         binding.submitButton2.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View view) {
-                if (selected) {
+                if (selectedDate != null) {
                     mListener.sendSelectedDoB(selectedDate);
                 } else {
                     Toast.makeText(getActivity(),"You must select a date!",Toast.LENGTH_SHORT).show();

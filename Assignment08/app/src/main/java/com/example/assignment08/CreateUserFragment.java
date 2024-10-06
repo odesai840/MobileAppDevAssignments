@@ -11,6 +11,7 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -80,9 +81,9 @@ public class CreateUserFragment extends Fragment {
         }
 
         if (Marital == null){
-            binding.countrySelected.setText("N/A");
+            binding.maritalSelected.setText("N/A");
         } else {
-            binding.countrySelected.setText(Marital);
+            binding.maritalSelected.setText(Marital);
         }
 
         if (Edu == null){
@@ -175,8 +176,6 @@ public class CreateUserFragment extends Fragment {
 
         return new User(userName, userEmail, phone, userCountry, userDoB, userMarital,userEdu);
     }
-
-
 
     public interface CreateUserFragmentListener {
         void gotoProfile(User user);
