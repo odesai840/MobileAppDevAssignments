@@ -1,3 +1,7 @@
+// Assignment 09
+// MainActivity.java
+// Ohm Desai and Sullivan Crouse
+
 package edu.uncc.assignment09;
 
 import android.os.Bundle;

@@ -1,3 +1,7 @@
+// Assignment 09
+// Book.java
+// Ohm Desai and Sullivan Crouse
+
 package edu.uncc.assignment09;
 
 import java.io.Serializable;
