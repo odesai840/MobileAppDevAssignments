@@ -51,6 +51,13 @@ public class BookDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Book Details");
+
+        binding.buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.closeBookDetails();
+            }
+        });
     }
 
     BooksDetailsListener mListener;

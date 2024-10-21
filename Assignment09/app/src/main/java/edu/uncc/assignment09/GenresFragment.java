@@ -10,6 +10,9 @@ import androidx.fragment.app.Fragment;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
 
 import java.util.ArrayList;
 
@@ -21,6 +24,9 @@ public class GenresFragment extends Fragment {
     }
 
     FragmentGenresBinding binding;
+    ListView listView;
+    ArrayAdapter<String> adapter;
+    ArrayList<String> genres;
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
@@ -33,6 +39,21 @@ public class GenresFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Genres");
+
+        listView = binding.genreList;
+        genres = Data.getAllGenres();
+
+        adapter = new ArrayAdapter<>(getActivity(),android.R.layout.simple_list_item_1, genres);
+
+        listView.setAdapter(adapter);
+
+        binding.genreList.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
+                String genre = genres.get(position);
+                mListener.gotoBooksForGenre(genre);
+            }
+        });
     }
 
     GenresListener mListener;
