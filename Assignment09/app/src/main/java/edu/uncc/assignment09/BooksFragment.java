@@ -58,6 +58,7 @@ public class BooksFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Books");
+        binding.genreTitle.setText(mGenre);
         mBooks.clear();
         mBooks.addAll(Data.getBooksByGenre(mGenre));
 
@@ -67,8 +68,8 @@ public class BooksFragment extends Fragment {
         binding.bookListView.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int position, long id) {
-                Book book = bookArrayList.get(position);
-                mListener.gotoBookDetails(book);
+                Book send_book = mBooks.get(position);
+                mListener.gotoBookDetails(send_book);
             }
         });
 

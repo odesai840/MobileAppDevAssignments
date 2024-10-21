@@ -16,7 +16,6 @@ import edu.uncc.assignment09.databinding.FragmentBookDetailsBinding;
 
 public class BookDetailsFragment extends Fragment {
     private static final String ARG_PARAM_BOOK = "ARG_PARAM_BOOK";
-    private static final String ARG_PARAM2 = "param2";
     private Book mBook;
 
     public BookDetailsFragment() {
@@ -51,6 +50,11 @@ public class BookDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Book Details");
+
+        binding.textViewBookTitle.setText(mBook.getTitle());
+        binding.textViewAuthorName.setText(mBook.getAuthor());
+        binding.textViewGenre.setText(mBook.getGenre());
+        binding.textViewYear.setText(String.valueOf(mBook.getYear()));
 
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
