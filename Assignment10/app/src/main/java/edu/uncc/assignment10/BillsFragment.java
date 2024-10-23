@@ -15,6 +15,7 @@ import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.TextView;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
@@ -141,9 +142,11 @@ public class BillsFragment extends Fragment {
             Bill bill = getItem(position);
             double total = bill.amount - (bill.amount * (bill.discount / 100.0));
 
+            SimpleDateFormat dateFormat = new SimpleDateFormat("yyyy-MM-dd");
+
             textViewBillCategory.setText(bill.getCategory());
             textViewBillName.setText(bill.getName());
-            textViewBillDate.setText(String.valueOf(bill.getBillDate()));
+            textViewBillDate.setText(dateFormat.format(bill.getBillDate()));
             textViewBillDiscount.setText(String.valueOf(bill.getDiscount()));
             textViewBillAmount.setText(String.valueOf(bill.getAmount()));
             textViewBillTotal.setText(String.valueOf(total));
