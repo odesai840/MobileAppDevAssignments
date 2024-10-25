@@ -51,6 +51,18 @@ public class BookDetailsFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Book Details");
+
+        binding.textViewBookTitle.setText(mBook.getTitle());
+        binding.textViewAuthorName.setText(mBook.getAuthor());
+        binding.textViewGenre.setText(mBook.getGenre());
+        binding.textViewYear.setText(String.valueOf(mBook.getYear()));
+
+        binding.buttonBack.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.closeBookDetails();
+            }
+        });
     }
 
     BooksDetailsListener mListener;
