@@ -41,6 +41,11 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     }
 
     @Override
+    public void removeBill(Bill bill) {
+        mBills.remove(bill);
+    }
+
+    @Override
     public void goToEditBill(Bill bill) {
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main, EditBillFragment.newInstance(bill), "edit-bill-fragment")

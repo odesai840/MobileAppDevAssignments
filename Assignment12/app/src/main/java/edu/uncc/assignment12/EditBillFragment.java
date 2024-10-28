@@ -74,6 +74,9 @@ public class EditBillFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
+        binding.editTextName.setText(mBill.name);
+        binding.editTextBill.setText(String.valueOf(mBill.amount));
+
         if(selectedBillDate == null){
             binding.textViewBillDate.setText("N/A");
         } else {
