@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Toast;
 
 import java.text.SimpleDateFormat;
 import java.util.ArrayList;
@@ -59,6 +60,7 @@ public class BillsFragment extends Fragment {
             @Override
             public void onClick(View v) {
                 mListener.gotoCreateBill();
+                adapter.notifyDataSetChanged();
             }
         });
     }
@@ -124,6 +126,14 @@ public class BillsFragment extends Fragment {
                 });
             }
         }
+    }
+
+    @Override
+    public void onResume() {
+        super.onResume();
+        mBills.clear();
+        mBills.addAll(mListener.getAllBills());
+        adapter.notifyDataSetChanged();
     }
 
     BillsListener mListener;
