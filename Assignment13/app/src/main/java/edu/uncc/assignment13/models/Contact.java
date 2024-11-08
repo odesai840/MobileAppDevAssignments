@@ -1,3 +1,7 @@
+// Assignment 13
+// Contact.java
+// Ohm Desai and Sullivan Crouse
+
 package edu.uncc.assignment13.models;
 
 import androidx.room.ColumnInfo;

@@ -1,3 +1,7 @@
+// Assignment 13
+// AppDatabase.java
+// Ohm Desai and Sullivan Crouse
+
 package edu.uncc.assignment13;
 
 import androidx.room.Database;

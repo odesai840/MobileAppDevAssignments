@@ -1,3 +1,7 @@
+// Assignment 13
+// MainActivity.java
+// Ohm Desai and Sullivan Crouse
+
 package edu.uncc.assignment13;
 
 import android.os.Bundle;
