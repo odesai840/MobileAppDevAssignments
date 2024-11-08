@@ -61,8 +61,6 @@ public class ContactsFragment extends Fragment {
                 adapter.notifyDataSetChanged();
             }
         });
-
-
     }
 
     class ContactsAdapter extends RecyclerView.Adapter<ContactsAdapter.ContactsViewHolder>{
@@ -101,7 +99,9 @@ public class ContactsFragment extends Fragment {
                 itemBinding.imageViewDelete.setOnClickListener(new View.OnClickListener() {
                     @Override
                     public void onClick(View v) {
-
+                        mListener.deleteContact(mContact);
+                        mContacts.remove(mContact);
+                        adapter.notifyDataSetChanged();
                     }
                 });
 

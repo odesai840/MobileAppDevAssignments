@@ -1,15 +1,32 @@
 package edu.uncc.assignment13.models;
 
+import androidx.room.ColumnInfo;
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 
+@Entity(tableName = "contacts")
 public class Contact implements Serializable {
-    String name;
-    String phone;
-    String email;
-    String phoneType;
-    String group;
+    @PrimaryKey(autoGenerate = true)
+    public long id;
+    @ColumnInfo()
+    public String name;
+    @ColumnInfo()
+    public String phone;
+    @ColumnInfo()
+    public String email;
+    @ColumnInfo()
+    public String phoneType;
+    @ColumnInfo()
+    public String group;
 
-    public Contact() {
+    public Contact(String name, String phone, String email, String phoneType, String group) {
+        this.name = name;
+        this.phone = phone;
+        this.email = email;
+        this.phoneType = phoneType;
+        this.group = group;
     }
 
     public String getName() {

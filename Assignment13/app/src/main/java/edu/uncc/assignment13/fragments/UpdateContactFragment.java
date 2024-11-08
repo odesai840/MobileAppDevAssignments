@@ -59,6 +59,10 @@ public class UpdateContactFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Create Contact");
 
+        binding.editTextName.setText(mContact.name);
+        binding.editTextEmail.setText(mContact.email);
+        binding.editTextPhone.setText(mContact.phone);
+
         if(mContact.getPhoneType() != null) {
             binding.textViewPhoneType.setText(mContact.getPhoneType());
         } else {
@@ -116,7 +120,10 @@ public class UpdateContactFragment extends Fragment {
 
                 //update current contact and send it to the main acitivty through the listener
                 // void doneUpdateContact(Contact contact);
-
+                mContact.setName(name);
+                mContact.setEmail(email);
+                mContact.setPhone(phone);
+                mListener.doneUpdateContact(mContact);
             }
         });
     }

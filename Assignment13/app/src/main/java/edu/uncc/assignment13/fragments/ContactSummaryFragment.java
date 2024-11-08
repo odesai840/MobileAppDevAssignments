@@ -51,6 +51,13 @@ public class ContactSummaryFragment extends Fragment {
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
         getActivity().setTitle("Contact Summary");
+
+        binding.textViewName.setText(mContact.name);
+        binding.textViewCell.setText(mContact.phone);
+        binding.textViewEmail.setText(mContact.email);
+        binding.textViewType.setText(mContact.phoneType);
+        binding.textViewGroup.setText(mContact.group);
+
         binding.buttonBack.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

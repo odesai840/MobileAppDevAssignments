@@ -7,6 +7,7 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 
@@ -20,7 +21,10 @@ import edu.uncc.assignment13.models.Contact;
 
 public class MainActivity extends AppCompatActivity implements ContactsFragment.ContactsListener,
         CreateContactFragment.CreateContactListener, SelectPhoneTypeFragment.SelectPhoneTypeListener,
-        SelectGroupFragment.SelectGroupListener, ContactSummaryFragment.ContactSummaryListener {
+        SelectGroupFragment.SelectGroupListener, ContactSummaryFragment.ContactSummaryListener,
+        UpdateContactFragment.UpdateContactListener {
+
+    AppDatabase db;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -33,6 +37,11 @@ public class MainActivity extends AppCompatActivity implements ContactsFragment.
             return insets;
         });
 
+        db = Room.databaseBuilder(this, AppDatabase.class, "contact.db")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
+
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main, new ContactsFragment())
                 .commit();
@@ -41,7 +50,7 @@ public class MainActivity extends AppCompatActivity implements ContactsFragment.
     @Override
     public ArrayList<Contact> getAllContacts() {
         //need to get the list from the Rooms DB.
-        return new ArrayList<Contact>();
+        return new ArrayList<Contact>(db.contactDao().getAll());
     }
 
     @Override
@@ -71,11 +80,13 @@ public class MainActivity extends AppCompatActivity implements ContactsFragment.
     @Override
     public void deleteContact(Contact contact) {
         //need to delete from the Rooms DB.
+        db.contactDao().delete(contact);
     }
 
     @Override
     public void clearAllContacts() {
         //need to delete all from the Rooms DB.
+        db.contactDao().deleteAll();
     }
 
     @Override
@@ -95,8 +106,21 @@ public class MainActivity extends AppCompatActivity implements ContactsFragment.
     }
 
     @Override
+    public void doneUpdateContact(Contact contact) {
+        db.contactDao().update(contact);
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
+    public void cancelUpdateContact() {
+        getSupportFragmentManager().popBackStack();
+    }
+
+    @Override
     public void doneCreateContact(Contact contact) {
         //need to save the contact to the Rooms DB.
+        db.contactDao().insertAll(contact);
+        getSupportFragmentManager().popBackStack();
     }
 
     @Override
@@ -147,5 +171,7 @@ public class MainActivity extends AppCompatActivity implements ContactsFragment.
     public void deleteContactFromSummary(Contact contact) {
         //need to save the contact to the Rooms DB.
         //pop back stack.
+        db.contactDao().delete(contact);
+        getSupportFragmentManager().popBackStack();
     }
 }
