@@ -6,12 +6,14 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import java.text.SimpleDateFormat;
 import java.util.ArrayList;
 
 import edu.uncc.assignment14.models.Bill;
@@ -24,6 +26,8 @@ public class BillsFragment extends Fragment {
     }
 
     FragmentBillsBinding binding;
+
+    SimpleDateFormat sdf = new SimpleDateFormat("MM/dd/yyyy");
 
     private ArrayList<Bill> mBills = new ArrayList<>();
     BillsAdapter adapter;
@@ -42,10 +46,16 @@ public class BillsFragment extends Fragment {
         mBills.addAll(mListener.getAllBills());
         adapter = new BillsAdapter();
 
+        binding.recyclerView.setLayoutManager(new LinearLayoutManager(getContext()));
+        binding.recyclerView.setAdapter(adapter);
+
         binding.buttonClear.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
                 mListener.clearAllBills();
+                mBills.clear();
+                mBills.addAll(mListener.getAllBills());
+                adapter.notifyDataSetChanged();
             }
         });
 
@@ -93,6 +103,7 @@ public class BillsFragment extends Fragment {
                 itemBinding.textViewBillDiscount.setText("Bill Discount" + String.format("%.2f", bill.getDiscount()) + " (" + String.format("$%.2f", discountAmount) + ")");
                 itemBinding.textViewTotalBill.setText("Total Bill: " + String.format("$%.2f", bill.getAmount() - discountAmount));
                 itemBinding.textViewBillCategory.setText(bill.getCategory());
+                itemBinding.textViewBillDate.setText(sdf.format(bill.getBillDate()));
 
                 itemBinding.getRoot().setOnClickListener(new View.OnClickListener() {
                     @Override
@@ -107,7 +118,7 @@ public class BillsFragment extends Fragment {
                         mListener.deleteBillFromBills(mBill);
                         mBills.clear();
                         mBills.addAll(mListener.getAllBills());
-                        notifyDataSetChanged();
+                        adapter.notifyDataSetChanged();
                     }
                 });
 

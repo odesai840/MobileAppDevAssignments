@@ -1,10 +1,17 @@
 package edu.uncc.assignment14.models;
 
 
+import androidx.room.Entity;
+import androidx.room.PrimaryKey;
+
 import java.io.Serializable;
 import java.util.Date;
 
+@Entity(tableName = "bills")
 public class Bill implements Serializable {
+    @PrimaryKey(autoGenerate = true)
+    public long id;
+
     String category;
     String name;
     Date billDate;

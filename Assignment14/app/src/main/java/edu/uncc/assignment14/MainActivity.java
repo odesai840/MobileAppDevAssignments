@@ -1,12 +1,16 @@
 package edu.uncc.assignment14;
 
+import static android.content.ContentValues.TAG;
+
 import android.os.Bundle;
+import android.util.Log;
 
 import androidx.activity.EdgeToEdge;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.core.graphics.Insets;
 import androidx.core.view.ViewCompat;
 import androidx.core.view.WindowInsetsCompat;
+import androidx.room.Room;
 
 import java.util.ArrayList;
 import java.util.Date;
@@ -23,6 +27,9 @@ import edu.uncc.assignment14.models.Bill;
 public class MainActivity extends AppCompatActivity implements BillsFragment.BillsListener,
         BillSummaryFragment.BillSummaryListener, CreateBillFragment.CreateBillListener, SelectCategoryFragment.SelectCategoryListener,
         SelectDiscountFragment.SelectDiscountListener, SelectBillDateFragment.SelectDateBillListener, EditBillFragment.EditBillListener {
+
+    BillsDatabase db;
+
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -33,6 +40,11 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
             v.setPadding(systemBars.left, systemBars.top, systemBars.right, systemBars.bottom);
             return insets;
         });
+
+        db = Room.databaseBuilder(this, BillsDatabase.class, "bills.db")
+                .allowMainThreadQueries()
+                .fallbackToDestructiveMigration()
+                .build();
 
         getSupportFragmentManager().beginTransaction()
                 .replace(R.id.main, new BillsFragment(), "bills-fragment")
@@ -59,7 +71,7 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public ArrayList<Bill> getAllBills() {
         //get the bills from the Rooms DB.
-        return new ArrayList<Bill>();
+        return (ArrayList<Bill>) db.billsDao().getAll();
     }
 
     @Override
@@ -73,16 +85,19 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public void clearAllBills() {
         //delete all the bills from the Rooms DB.
+        db.billsDao().deleteAll();
     }
 
     @Override
     public void deleteBillFromBills(Bill bill) {
         //delete the bill from the Rooms DB.
+        db.billsDao().delete(bill);
     }
 
     @Override
     public void deleteBill(Bill bill) {
         //delete the bill from the Rooms DB.
+        db.billsDao().delete(bill);
         getSupportFragmentManager().popBackStack();
     }
 
@@ -94,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public void createBillSuccessful(Bill bill) {
         //store the bill in the Rooms DB.
+        db.billsDao().insertAll(bill);
+        Log.d(TAG, "Successfully inserted to db");
         getSupportFragmentManager().popBackStack();
     }
 
@@ -105,6 +122,7 @@ public class MainActivity extends AppCompatActivity implements BillsFragment.Bil
     @Override
     public void editBillSuccessful(Bill bill) {
         //update the bill in the Rooms DB.
+        db.billsDao().update(bill);
         getSupportFragmentManager().popBackStack();
     }
 
