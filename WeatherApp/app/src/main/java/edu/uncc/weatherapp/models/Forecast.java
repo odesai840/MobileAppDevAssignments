@@ -6,16 +6,18 @@ public class Forecast {
     private int humidity;
     private String windSpeed;
     private String shortForecast;
+    private String iconUrl;
 
     public Forecast() {
     }
 
-    public Forecast(String startTime, int temperature, int humidity, String windSpeed, String shortForecast) {
+    public Forecast(String startTime, int temperature, int humidity, String windSpeed, String shortForecast, String iconUrl) {
         this.startTime = startTime;
         this.temperature = temperature;
         this.humidity = humidity;
         this.windSpeed = windSpeed;
         this.shortForecast = shortForecast;
+        this.iconUrl = iconUrl;
     }
 
     public String getStartTime() {
@@ -56,5 +58,13 @@ public class Forecast {
 
     public void setShortForecast(String shortForecast) {
         this.shortForecast = shortForecast;
+    }
+
+    public String getIconUrl() {
+        return iconUrl;
+    }
+
+    public void setIconUrl(String iconUrl) {
+        this.iconUrl = iconUrl;
     }
 }

@@ -13,6 +13,8 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
+import com.squareup.picasso.Picasso;
+
 import org.json.JSONArray;
 import org.json.JSONException;
 import org.json.JSONObject;
@@ -111,8 +113,11 @@ public class WeatherForecastFragment extends Fragment {
                                             }
                                             forecast.setWindSpeed(forecastJsonObject.getString("windSpeed"));
                                             forecast.setShortForecast(forecastJsonObject.getString("shortForecast"));
+                                            forecast.setIconUrl(forecastJsonObject.getString("icon"));
                                             mForecasts.add(forecast);
-                                            getActivity().runOnUiThread(()->adapter.notifyDataSetChanged());
+                                            if(getActivity() != null){
+                                                getActivity().runOnUiThread(()->adapter.notifyDataSetChanged());
+                                            }
                                         }
                                     } catch (JSONException e) {
                                         e.printStackTrace();
@@ -188,6 +193,7 @@ public class WeatherForecastFragment extends Fragment {
                 itemBinding.textViewHumidity.setText("Precipitation: " + mForecast.getHumidity() + "%");
                 itemBinding.textViewWindSpeed.setText("Wind Speed: " + mForecast.getWindSpeed());
                 itemBinding.textViewForecast.setText(mForecast.getShortForecast());
+                Picasso.get().load(mForecast.getIconUrl()).into(itemBinding.imageView);
             }
         }
     }

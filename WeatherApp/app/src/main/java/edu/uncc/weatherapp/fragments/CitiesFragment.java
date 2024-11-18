@@ -75,7 +75,9 @@ public class CitiesFragment extends Fragment {
                             city.setLat(cityJsonObject.getDouble("lat"));
                             city.setLng(cityJsonObject.getDouble("lng"));
                             mCities.add(city);
-                            getActivity().runOnUiThread(()->adapter.notifyDataSetChanged());
+                            if(getActivity() != null){
+                                getActivity().runOnUiThread(()->adapter.notifyDataSetChanged());
+                            }
                         }
                     } catch (JSONException e) {
                         e.printStackTrace();
