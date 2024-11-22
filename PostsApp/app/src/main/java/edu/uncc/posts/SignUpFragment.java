@@ -74,7 +74,7 @@ public class SignUpFragment extends Fragment {
                 } else if (password.isEmpty()){
                     Toast.makeText(getActivity(), "Enter valid password!", Toast.LENGTH_SHORT).show();
                 } else {
-                    client.newCall(createUser(email, name, password)).enqueue(new Callback() {
+                    client.newCall(createUser(email, password, name)).enqueue(new Callback() {
                         @Override
                         public void onFailure(@NonNull Call call, @NonNull IOException e) {
                             e.printStackTrace();
